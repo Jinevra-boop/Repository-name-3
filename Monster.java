@@ -12,9 +12,11 @@ public class Monster {
     int Resist_Arms;
     int strength;
     int score;
+	String information;
+	
 
     //constructor
-    Monster(String name, int hp, int strength, int lvl, int resist_Head, int resist_Body, int resist_Arms, int resist_Legs,int score){
+    Monster(String name, int hp, int strength, int lvl, int resist_Head, int resist_Body, int resist_Arms, int resist_Legs,int score, String information){
         this.hp=hp;
         //this.weapon=2;
         this.name=name;
@@ -24,6 +26,7 @@ public class Monster {
         this.Resist_Arms=resist_Arms;
         this.Resist_Legs=resist_Legs;
         this.score=score;
+		this.information=information;
     }
 
     //methods
