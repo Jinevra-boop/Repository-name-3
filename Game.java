@@ -52,13 +52,16 @@ public class Game {
       try {
           DataInputStream dos = new DataInputStream(new FileInputStream(File_name + ".bin"));
           try {
-              boolean life_status = dos.readBoolean();
-
+              this.tom.life_status = dos.readBoolean();
               this.tom.lvl = dos.readInt();
               this.tom.hp = dos.readInt();
               this.tom.max_hp = dos.readInt();
               this.tom.strength = dos.readInt();
-              String name = dos.readUTF();
+              this.tom.name = dos.readUTF();
+              int damage=dos.readInt();
+              for (int i=0;i<=10;i++){
+                  if (damage==weapons[i].max_damage){this.tom.Change_Weapon(weapons[i]);}
+              }
               this.score = dos.readInt();
               this.tom.displayInfo();
           } catch (Throwable var11) {
@@ -85,11 +88,12 @@ public class Game {
 
             try {
                 dos.writeBoolean(this.tom.life_status);
-                dos.writeInt(2);
-                dos.writeInt(10);
-                dos.writeInt(20);
-                dos.writeInt(2);
+                dos.writeInt(this.tom.lvl);
+                dos.writeInt(this.tom.hp);
+                dos.writeInt(this.tom.max_hp);
+                dos.writeInt(this.tom.strength);
                 dos.writeUTF(this.tom.name);
+                dos.writeInt(this.tom.Max_Damage_Weapon());
                 dos.writeInt(this.score);
                 System.out.println("File has been written");
             } catch (Throwable var6) {
@@ -123,10 +127,10 @@ public class Game {
         System.out.println(door);
         switch(door) {
             case 0:
-                this.Fight_with_Monster();
+                Fight_with_Monster();
                 break;
             case 1:
-                this.Loot();
+                Loot();
                 break;
         }
 
@@ -170,19 +174,21 @@ public class Game {
             int menu_num = num1.nextInt();
             switch(menu_num) {
                 case 1:
-                    monsters[monster_lvl][monster_number].Set_Monster_HP(tom.strength + weapons[0].Weapon_Damage() / monsters[monster_lvl][monster_number].Resist_Head);
+                    monsters[monster_lvl][monster_number].Set_Monster_HP(tom.strength + tom.weapon.Weapon_Damage()  / monsters[monster_lvl][monster_number].Resist_Head);
                     break;
                 case 2:
-                    monsters[monster_lvl][monster_number].Set_Monster_HP(tom.strength + this.weapons[0].Weapon_Damage() / monsters[monster_lvl][monster_number].Resist_Body);
+                    monsters[monster_lvl][monster_number].Set_Monster_HP(tom.strength + tom.weapon.Weapon_Damage()  / monsters[monster_lvl][monster_number].Resist_Body);
                     break;
                 case 3:
-                    monsters[monster_lvl][monster_number].Set_Monster_HP(tom.strength + this.weapons[0].Weapon_Damage() / monsters[monster_lvl][monster_number].Resist_Legs);
+                    monsters[monster_lvl][monster_number].Set_Monster_HP(tom.strength + tom.weapon.Weapon_Damage()  / monsters[monster_lvl][monster_number].Resist_Legs);
                     break;
                 case 4:
-                    monsters[monster_lvl][monster_number].Set_Monster_HP(tom.strength + this.weapons[0].Weapon_Damage() / monsters[monster_lvl][monster_number].Resist_Arms);
+                    monsters[monster_lvl][monster_number].Set_Monster_HP(tom.strength + tom.weapon.Weapon_Damage()  / monsters[monster_lvl][monster_number].Resist_Arms);
                     break;
                 case 5:
                     tom.Drink_Potion();
+					if(tom.hp>tom.max_hp){tom.hp=tom.max_hp;}
+                    break;
             }
 
             tom.Set_Player_HP(monsters[monster_lvl][monster_number].strength);
