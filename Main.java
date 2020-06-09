@@ -1,22 +1,10 @@
 package com.company;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-
 public class Main {
-    private Game game;
-    private Screens screen;
-
-    public static void main(String[] args) throws Exception {
-
-        Screens screen = new Screens();
-        screen.MainScreen();
-
+private Game game;
+    public static void main(String[] args) throws Exception{
+	Start_Game();
     }
-
-
     public static void Start_Game()throws Exception{
         Game game = new Game();
         System.out.println("Игра создана");
@@ -27,8 +15,10 @@ public class Main {
 
     public static void Load_Game(){ }
 
-    public static void Hall_of_Fame(){ }
+    public static void Exit(){ }
+
+    public static void Hall_of_Fame(){
+        System.out.println("Добро пожаловать в игру Подземелья! Каждый раунд на выбор тебе дается две двери: за одной из них находятся сокровища (золотые монеты или оружие), а за другой тебя ждет битва с монстром! Каждый монстр имеет свой уникальный запас здоровья, силу, и имеет разные уязвимые места. Для победы над монстром тебе понадобится применить смекалку и свои стратегические способности. Каждый ход монстра можно ударить по одной из четырех болевых точек. Или же можно выпить исцеляющее зелье, но это займет целый ход. При успешном поражении монстра тебе будет предложен выбор: увеличить свой запас здоровья или усилить мощность удара. Также за каждый выигранный бой повышается и твой уровень. Если же победа была одержана монстром, единственное, что тебе остается - не отчаиваться и оставить парочку слов напоследок для доски почета. Всего в игре 5 уровней, и, чтобы пройти игру, нужно одолеть всех монстров, повстречавшихся тебе на пути. Желаем удачи!  ");
+    }
 
 }
-
-

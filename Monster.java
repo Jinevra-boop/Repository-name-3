@@ -6,17 +6,16 @@ public class Monster {
     int hp;
     int lvl;
     Weapon weapons[];
-    int monsterscore;
     int Resist_Head;
     int Resist_Body;
     int Resist_Legs;
     int Resist_Arms;
     int strength;
+    int score;
 
     //constructor
-    Monster(String name, int hp, int strength, int monsterscore, int lvl, int resist_Head, int resist_Body, int resist_Arms, int resist_Legs){
+    Monster(String name, int hp, int strength, int lvl, int resist_Head, int resist_Body, int resist_Arms, int resist_Legs,int score){
         this.hp=hp;
-        this.monsterscore=monsterscore;
         //this.weapon=2;
         this.name=name;
         this.strength=strength;
@@ -24,6 +23,7 @@ public class Monster {
         this.Resist_Body=resist_Body;
         this.Resist_Arms=resist_Arms;
         this.Resist_Legs=resist_Legs;
+        this.score=score;
         System.out.println("Монстр создан");
     }
 

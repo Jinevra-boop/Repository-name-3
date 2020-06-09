@@ -49,6 +49,10 @@ public class Player {
         this.weapon=weap;
     }
 
+    //public int Player_Weapon(){
+      //  this.weapon=weap;
+   // }
+
     public void Drink_Potion(){
         hp=hp+5;
     }

@@ -4,6 +4,7 @@ public class Weapon {
     //attributes
      String name;
     int max_damage;
+    int lvl;
     private int min_damage;
     private int crit_rate;
 
