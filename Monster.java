@@ -24,7 +24,6 @@ public class Monster {
         this.Resist_Arms=resist_Arms;
         this.Resist_Legs=resist_Legs;
         this.score=score;
-        System.out.println("Монстр создан");
     }
 
     //methods
