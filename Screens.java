@@ -59,7 +59,6 @@ public class Screens{
             public void actionPerformed(ActionEvent e) {
                 try {
                     main.Load_Game();
-					DialogSaveName();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -83,7 +82,6 @@ public class Screens{
             public void actionPerformed(ActionEvent e) {
                 try {
                     main.Save_Game();
-					AddSaveNames();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -130,29 +128,6 @@ public class Screens{
 
     public static void  DialogWin(String name, int score){
         showInputDialog(null,"Ты победил, герой "+name+"!\nСчёт:"+score+"\nСкажи пару слов на прощанье:\n");
-    }
-	
-	public void DialogSaveName() throws FileNotFoundException {
-        Scanner NewScan = new Scanner(new File("SaveName.txt"));
-        ArrayList<String> Name = new ArrayList<>();
-        int NumberNames = 0;
-        while (NewScan.hasNextLine()) {
-            Name.add(NewScan.nextLine());
-            NumberNames++;
-        }
-        String[] Names = new String[256];
-        String[] result = new String[256];
-        for (int i = 0; i < NumberNames; i++) {
-            result[i] = Names[i] + "\n";
-        }
-        showMessageDialog(null, result);
-    }
-	
-	public void AddSaveNames() throws IOException{
-        FileWriter writer = new FileWriter("SaveNames.txt", true);
-        String text = tom.name+'\n';
-        writer.write(text);
-        writer.flush();
     }
 }
 
